@@ -4,12 +4,13 @@ go 1.18
 
 require (
 	github.com/bytedance/gopkg v0.1.1
+	github.com/cloudwego/dynamicgo v0.2.9
 	github.com/cloudwego/hertz v0.9.3
 	github.com/cloudwego/hertz/cmd/hz v0.9.1
 	github.com/cloudwego/kitex v0.10.3
 	github.com/hertz-contrib/cors v0.1.0
 	github.com/hertz-contrib/swagger v0.1.0
-	github.com/hertz-contrib/swagger-generate v0.0.0
+	github.com/hertz-contrib/swagger-generate v0.0.0-20240921161005-987932fb30c5
 	github.com/swaggo/files v1.0.1
 	google.golang.org/genproto/googleapis/api v0.0.0-20240730163845-b1a4ccb954bf
 	google.golang.org/protobuf v1.34.2
@@ -23,7 +24,6 @@ require (
 	github.com/bytedance/sonic/loader v0.2.0 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
 	github.com/cloudwego/configmanager v0.2.2 // indirect
-	github.com/cloudwego/dynamicgo v0.2.9 // indirect
 	github.com/cloudwego/fastpb v0.0.4 // indirect
 	github.com/cloudwego/frugal v0.1.15 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
@@ -73,5 +73,3 @@ require (
 )
 
 replace github.com/apache/thrift v0.17.0 => github.com/apache/thrift v0.13.0
-
-replace github.com/hertz-contrib/swagger-generate => ../../swagger-generate
