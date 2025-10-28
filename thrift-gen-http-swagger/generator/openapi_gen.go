@@ -680,8 +680,7 @@ func (g *OpenAPIGenerator) getResponseForStruct(d *openapi.Document, desc *thrif
 	}
 
 	// Get api.body and api.raw_body option schema
-	bodySchema := g.getSchemaByOption(desc, consts.ApiBody)
-	rawBodySchema := g.getSchemaByOption(desc, consts.ApiRawBody)
+	bodySchema := g.getSchemaWithoutOptions(desc, []string{consts.ApiHeader}) // consts.ApiBody
 	var additionalProperties []*openapi.NamedMediaType
 
 	if bodySchema != nil && bodySchema.Properties != nil && len(bodySchema.Properties.AdditionalProperties) > 0 {
@@ -701,28 +700,88 @@ func (g *OpenAPIGenerator) getResponseForStruct(d *openapi.Document, desc *thrif
 		})
 	}
 
-	if rawBodySchema != nil && len(rawBodySchema.Properties.AdditionalProperties) > 0 {
-		refSchema := &openapi.NamedSchemaOrReference{
-			Name:  desc.GetName() + consts.ComponentSchemaSuffixRawBody,
-			Value: &openapi.SchemaOrReference{Schema: rawBodySchema},
-		}
-		ref := consts.ComponentSchemaPrefix + desc.GetName() + consts.ComponentSchemaSuffixRawBody
-		g.addSchemaToDocument(d, refSchema)
-		additionalProperties = append(additionalProperties, &openapi.NamedMediaType{
-			Name: consts.ContentTypeRawBody,
-			Value: &openapi.MediaType{
-				Schema: &openapi.SchemaOrReference{
-					Reference: &openapi.Reference{Xref: ref},
-				},
-			},
-		})
-	}
-
 	content := &openapi.MediaTypes{
 		AdditionalProperties: additionalProperties,
 	}
 
 	return headers, content
+}
+
+func (g *OpenAPIGenerator) getSchemaWithoutOptions(inputDesc *thrift_reflection.StructDescriptor, blacklistOpts []string) *openapi.Schema {
+	definitionProperties := &openapi.Properties{
+		AdditionalProperties: make([]*openapi.NamedSchemaOrReference, 0),
+	}
+
+	var allRequired []string
+	var extSchema *openapi.Schema
+	err := utils.ParseStructOption(inputDesc, consts.OpenapiSchema, &extSchema)
+	if err != nil {
+		logs.Errorf("Error parsing struct option: %s", err)
+	}
+	if extSchema != nil {
+		if extSchema.Required != nil {
+			allRequired = extSchema.Required
+		}
+	}
+
+	var required []string
+afterFieldLoop:
+	for _, field := range inputDesc.GetFields() {
+		for _, opt := range blacklistOpts {
+			if field.Annotations[opt] != nil {
+				continue afterFieldLoop
+			}
+		}
+
+		extName := field.GetName()
+
+		if common.Contains(allRequired, extName) {
+			required = append(required, extName)
+		}
+
+		// Get the field description from the comments.
+		description := g.filterCommentString(field.Comments)
+		fieldSchema := g.schemaOrReferenceForField(field.Type)
+		if fieldSchema == nil {
+			continue
+		}
+
+		if fieldSchema.IsSetSchema() {
+			fieldSchema.Schema.Description = description
+			newFieldSchema := &openapi.Schema{}
+			err := utils.ParseFieldOption(field, consts.OpenapiProperty, &newFieldSchema)
+			if err != nil {
+				logs.Errorf("Error parsing field option: %s", err)
+			}
+			err = common.MergeStructs(fieldSchema.Schema, newFieldSchema)
+			if err != nil {
+				logs.Errorf("Error merging field option: %s", err)
+			}
+		}
+
+		definitionProperties.AdditionalProperties = append(
+			definitionProperties.AdditionalProperties,
+			&openapi.NamedSchemaOrReference{
+				Name:  extName,
+				Value: fieldSchema,
+			},
+		)
+	}
+
+	schema := &openapi.Schema{
+		Type:       consts.SchemaObjectType,
+		Properties: definitionProperties,
+	}
+
+	if extSchema != nil {
+		err := common.MergeStructs(schema, extSchema)
+		if err != nil {
+			logs.Errorf("Error merging struct option: %s", err)
+		}
+	}
+
+	schema.Required = required
+	return schema
 }
 
 func (g *OpenAPIGenerator) getSchemaByOption(inputDesc *thrift_reflection.StructDescriptor, option string) *openapi.Schema {
