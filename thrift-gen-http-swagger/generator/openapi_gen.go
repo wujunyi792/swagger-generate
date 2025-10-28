@@ -251,6 +251,18 @@ func (g *OpenAPIGenerator) getDocumentOption(obj interface{}) error {
 
 func (g *OpenAPIGenerator) addPathsToDocument(d *openapi.Document, services []*thrift_reflection.ServiceDescriptor) {
 	var err error
+
+	for _, s := range services {
+		if s == nil || s.GetBase() == "" {
+			continue
+		}
+
+		_s := g.fileDesc.GetServiceDescriptor(s.GetBase())
+		if _s != nil {
+			services = append(services, _s)
+		}
+	}
+
 	for _, s := range services {
 		if s != nil {
 			annotationsCount := 0
