@@ -86,7 +86,7 @@ cd thrift-gen-http-swagger
 go install
 
 # Install directly
-go install github.com/hertz-contrib/swagger-generate/thrift-gen-http-swagger@latest
+go install github.com/wujunyi792/swagger-generate/thrift-gen-http-swagger@latest
 
 # Verify the installation
 thrift-gen-http-swagger --version

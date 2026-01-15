@@ -1,4 +1,4 @@
-module github.com/hertz-contrib/swagger-generate/thrift-gen-http-swagger
+module github.com/wujunyi792/swagger-generate/thrift-gen-http-swagger
 
 go 1.16
 

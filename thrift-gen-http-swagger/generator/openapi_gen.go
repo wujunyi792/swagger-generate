@@ -46,8 +46,8 @@ import (
 	"github.com/hertz-contrib/swagger-generate/common/consts"
 	common "github.com/hertz-contrib/swagger-generate/common/utils"
 	openapi "github.com/hertz-contrib/swagger-generate/idl/thrift"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-http-swagger/args"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-http-swagger/utils"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-http-swagger/args"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-http-swagger/utils"
 )
 
 type OpenAPIGenerator struct {
