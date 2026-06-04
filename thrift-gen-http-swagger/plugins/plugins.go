@@ -64,17 +64,8 @@ func handleRequest(req *plugin.Request) (err error) {
 	og := generator.NewOpenAPIGenerator(ast)
 	openapiContent := og.BuildDocument(args)
 
-	sg, err := generator.NewServerGenerator(ast, args)
-	if err != nil {
-		return err
-	}
-	serverContent, err := sg.Generate()
-	if err != nil {
-		return err
-	}
-
 	res := &plugin.Response{
-		Contents: append(openapiContent, serverContent...),
+		Contents: openapiContent,
 	}
 	if err := handleResponse(res); err != nil {
 		return err
