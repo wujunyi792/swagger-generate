@@ -11,3 +11,5 @@ require (
 	github.com/hertz-contrib/swagger-generate v0.0.0-20240921161005-987932fb30c5
 	github.com/swaggo/files v1.0.1
 )
+
+replace github.com/hertz-contrib/swagger-generate => ..
