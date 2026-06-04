@@ -84,6 +84,7 @@ func (g *OpenAPIGenerator) BuildDocument(arguments *args.Arguments) []*plugin.Ge
 			AdditionalProperties: []*openapi.NamedSchemaOrReference{},
 		},
 	}
+	ensureDocumentDefaults(d)
 
 	var extDocument *openapi.Document
 	err := g.getDocumentOption(&extDocument)
@@ -97,6 +98,7 @@ func (g *OpenAPIGenerator) BuildDocument(arguments *args.Arguments) []*plugin.Ge
 			logs.Errorf("Error merging document option: %s", err)
 			return nil
 		}
+		ensureDocumentDefaults(d)
 	}
 
 	g.addPathsToDocument(d, g.fileDesc.GetServices())
@@ -220,6 +222,21 @@ func (g *OpenAPIGenerator) BuildDocument(arguments *args.Arguments) []*plugin.Ge
 	})
 
 	return ret
+}
+
+func ensureDocumentDefaults(d *openapi.Document) {
+	if d.Paths == nil {
+		d.Paths = &openapi.Paths{}
+	}
+	if d.Components == nil {
+		d.Components = &openapi.Components{}
+	}
+	if d.Components.Schemas == nil {
+		d.Components.Schemas = &openapi.SchemasOrReferences{}
+	}
+	if d.Components.Schemas.AdditionalProperties == nil {
+		d.Components.Schemas.AdditionalProperties = []*openapi.NamedSchemaOrReference{}
+	}
 }
 
 func (g *OpenAPIGenerator) getDocumentOption(obj interface{}) error {
