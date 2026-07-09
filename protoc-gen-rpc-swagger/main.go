@@ -38,8 +38,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/hertz-contrib/swagger-generate/common/consts"
-	"github.com/hertz-contrib/swagger-generate/protoc-gen-rpc-swagger/generator"
+	"github.com/wujunyi792/swagger-generate/common/consts"
+	"github.com/wujunyi792/swagger-generate/protoc-gen-rpc-swagger/generator"
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/types/pluginpb"
 )

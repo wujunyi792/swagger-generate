@@ -24,12 +24,12 @@
 
 ```sh
 # 官方仓库安装
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd <plugin-directory>
 go install
 
 # 直接安装
-go install github.com/hertz-contrib/swagger-generate/<plugin-name>@latest
+go install github.com/wujunyi792/swagger-generate/<plugin-name>@latest
 ```
 
 ## 使用示例

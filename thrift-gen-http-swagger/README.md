@@ -81,7 +81,7 @@ For more usage, please refer to [Example](example/hello.thrift).
 ```sh
 # Install from the official repository
 
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd thrift-gen-http-swagger
 go install
 

@@ -8,11 +8,11 @@ This is a plugin for generating RPC Swagger documentation and providing Swagger-
 
 ```sh
 # Install from the official repository
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd protoc-gen-rpc-swagger
 go install
 # Direct installation
-go install github.com/hertz-contrib/swagger-generate/protoc-gen-rpc-swagger@latest
+go install github.com/wujunyi792/swagger-generate/protoc-gen-rpc-swagger@latest
 ```
 
 ## Usage

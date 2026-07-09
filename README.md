@@ -24,12 +24,12 @@ You can install the plugins using the following methods:
 
 ```sh
 # Install from the official repository
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd <plugin-directory>
 go install
 
 # Direct installation
-go install github.com/hertz-contrib/swagger-generate/<plugin-name>@latest
+go install github.com/wujunyi792/swagger-generate/<plugin-name>@latest
 ```
 
 ## Usage Examples

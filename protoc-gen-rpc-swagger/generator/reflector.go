@@ -37,11 +37,11 @@ import (
 	"log"
 	"strings"
 
-	"github.com/hertz-contrib/swagger-generate/common/consts"
-	common "github.com/hertz-contrib/swagger-generate/common/utils"
-	"github.com/hertz-contrib/swagger-generate/idl/protobuf/openapi"
-	wk "github.com/hertz-contrib/swagger-generate/protoc-gen-rpc-swagger/generator/wellknown"
-	"github.com/hertz-contrib/swagger-generate/protoc-gen-rpc-swagger/utils"
+	"github.com/wujunyi792/swagger-generate/common/consts"
+	common "github.com/wujunyi792/swagger-generate/common/utils"
+	"github.com/wujunyi792/swagger-generate/idl/protobuf/openapi"
+	wk "github.com/wujunyi792/swagger-generate/protoc-gen-rpc-swagger/generator/wellknown"
+	"github.com/wujunyi792/swagger-generate/protoc-gen-rpc-swagger/utils"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 

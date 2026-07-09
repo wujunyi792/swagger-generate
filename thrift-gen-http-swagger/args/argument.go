@@ -19,7 +19,7 @@ package args
 import (
 	"fmt"
 
-	"github.com/hertz-contrib/swagger-generate/common/utils"
+	"github.com/wujunyi792/swagger-generate/common/utils"
 )
 
 type Arguments struct {

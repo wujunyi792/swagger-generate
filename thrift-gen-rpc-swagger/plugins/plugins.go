@@ -23,8 +23,8 @@ import (
 
 	"github.com/cloudwego/hertz/cmd/hz/util/logs"
 	"github.com/cloudwego/thriftgo/plugin"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger/args"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger/generator"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger/args"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger/generator"
 )
 
 func Run() int {

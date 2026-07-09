@@ -43,11 +43,11 @@ import (
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/plugin"
 	"github.com/cloudwego/thriftgo/thrift_reflection"
-	"github.com/hertz-contrib/swagger-generate/common/consts"
-	common "github.com/hertz-contrib/swagger-generate/common/utils"
-	openapi "github.com/hertz-contrib/swagger-generate/idl/thrift"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger/args"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger/utils"
+	"github.com/wujunyi792/swagger-generate/common/consts"
+	common "github.com/wujunyi792/swagger-generate/common/utils"
+	openapi "github.com/wujunyi792/swagger-generate/idl/thrift"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger/args"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger/utils"
 )
 
 type OpenAPIGenerator struct {

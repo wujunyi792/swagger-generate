@@ -26,9 +26,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/hertz-contrib/swagger-generate/common/consts"
-	"github.com/hertz-contrib/swagger-generate/common/tpl"
-	"github.com/hertz-contrib/swagger-generate/common/utils"
+	"github.com/wujunyi792/swagger-generate/common/consts"
+	"github.com/wujunyi792/swagger-generate/common/tpl"
+	"github.com/wujunyi792/swagger-generate/common/utils"
 	"google.golang.org/protobuf/compiler/protogen"
 )
 

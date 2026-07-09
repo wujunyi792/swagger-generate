@@ -28,10 +28,10 @@ import (
 
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/plugin"
-	"github.com/hertz-contrib/swagger-generate/common/consts"
-	"github.com/hertz-contrib/swagger-generate/common/tpl"
-	"github.com/hertz-contrib/swagger-generate/common/utils"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger/args"
+	"github.com/wujunyi792/swagger-generate/common/consts"
+	"github.com/wujunyi792/swagger-generate/common/tpl"
+	"github.com/wujunyi792/swagger-generate/common/utils"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger/args"
 )
 
 type ServerGenerator struct {

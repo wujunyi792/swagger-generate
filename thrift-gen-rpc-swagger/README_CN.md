@@ -10,12 +10,12 @@
 
 # 官方仓库安装
 
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd thrift-gen-rpc-swagger
 go install
 
 # 直接安装
-go install github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger@latest
+go install github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger@latest
 
 # 验证安装
 thrift-gen-rpc-swagger --version

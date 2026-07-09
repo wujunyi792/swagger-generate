@@ -9,12 +9,12 @@ This is a plugin for generating RPC Swagger documentation and providing Swagger-
 ```sh
 # Install from the official repository
 
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd swagger-generate
 go install
 
 # Direct installation
-go install github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger@latest
+go install github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger@latest
 
 # Verify installation
 thrift-gen-rpc-swagger --version

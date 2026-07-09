@@ -21,7 +21,7 @@ import (
 	"os"
 
 	"github.com/cloudwego/hertz/cmd/hz/util/logs"
-	"github.com/hertz-contrib/swagger-generate/thrift-gen-rpc-swagger/plugins"
+	"github.com/wujunyi792/swagger-generate/thrift-gen-rpc-swagger/plugins"
 )
 
 func main() {

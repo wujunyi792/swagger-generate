@@ -8,11 +8,11 @@
 
 ```sh
 # 官方仓库安装
-git clone https://github.com/hertz-contrib/swagger-generate
+git clone https://github.com/wujunyi792/swagger-generate
 cd protoc-gen-rpc-swagger
 go install
 # 直接安装
-go install github.com/hertz-contrib/swagger-generate/protoc-gen-rpc-swagger@latest
+go install github.com/wujunyi792/swagger-generate/protoc-gen-rpc-swagger@latest
 ```
 
 ## 使用

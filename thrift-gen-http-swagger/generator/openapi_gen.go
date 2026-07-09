@@ -43,9 +43,9 @@ import (
 	"github.com/cloudwego/thriftgo/parser"
 	"github.com/cloudwego/thriftgo/plugin"
 	"github.com/cloudwego/thriftgo/thrift_reflection"
-	"github.com/hertz-contrib/swagger-generate/common/consts"
-	common "github.com/hertz-contrib/swagger-generate/common/utils"
-	openapi "github.com/hertz-contrib/swagger-generate/idl/thrift"
+	"github.com/wujunyi792/swagger-generate/common/consts"
+	common "github.com/wujunyi792/swagger-generate/common/utils"
+	openapi "github.com/wujunyi792/swagger-generate/idl/thrift"
 	"github.com/wujunyi792/swagger-generate/thrift-gen-http-swagger/args"
 	"github.com/wujunyi792/swagger-generate/thrift-gen-http-swagger/utils"
 )
