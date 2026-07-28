@@ -920,22 +920,10 @@ func (g *OpenAPIGenerator) filterCommentString(str string) string {
 
 func (g *OpenAPIGenerator) addSchemasForStructsToDocument(d *openapi.Document, structs []*thrift_reflection.StructDescriptor) {
 	for _, s := range structs {
-		var sls []*thrift_reflection.StructDescriptor
-		for _, f := range s.GetFields() {
-			fieldType := f.GetType()
-			if fieldType == nil {
-				logs.Errorf("Warning: field type is nil for field: %s\n", f.GetName())
-				continue
-			}
-			if fieldType.IsStruct() {
-				structDesc, _ := fieldType.GetStructDescriptor()
-				sls = append(sls, structDesc)
-			}
-		}
-		if len(sls) > 0 {
-			g.addSchemasForStructsToDocument(d, sls)
-		}
-
+		// 不在此处手工递归子 struct：字段级的 schemaOrReferenceForField 会为 struct
+		// 字段登记 requiredSchemas 并返回 $ref，外层 worklist 循环负责继续消费。
+		// 手工递归与之职责重复，且对自引用类型（如 JsonField.items: JsonField）
+		// 会在去重检查之前就无限自调用，导致栈溢出。
 		schemaName := s.GetName()
 
 		// Only generate this if we need it and haven't already generated it.
